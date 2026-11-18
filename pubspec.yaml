@@ -17,7 +17,7 @@ dependencies:
   path: ^1.8.3
   http: ^1.6.0
   shared_preferences: ^2.5.5
-  flutter_slidable: ^4.0.3
+  flutter_slidable: ^5.2.0
   notification_listener_service: ^1.0.0
   file_picker: ^13.1.0
   image_picker: ^1.2.4

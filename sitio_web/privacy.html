@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy policy · On Budget</title>
+  <meta name="description" content="What data On Budget handles, where it is stored and which optional connections it makes.">
+  <link rel="icon" href="favicon.png">
+  <link rel="stylesheet" href="estilos.css">
+  <script src="config.js"></script>
+  <script src="comun.js"></script>
+</head>
+<body>
+  <header class="barra">
+    <div class="barra-dentro">
+      <a class="marca" href="./"><img src="logo.png" alt="">On Budget</a>
+      <nav class="menu" aria-label="Secciones">
+        <a href="./">Inicio</a>
+        <a href="privacidad.html">Privacidad</a>
+        <a href="borrar-datos.html">Borrar datos</a>
+        <a href="soporte.html">Soporte</a>
+        <a href="comunidad.html">Comunidad</a>
+        <a href="index.html#donar">Apoyar</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <h1>On Budget privacy policy</h1>
+    <p class="nota">Last updated: 17 November 2026 · <a href="privacidad.html" hreflang="es">Versión en español</a> (the Spanish version prevails in case of doubt)</p>
+
+    <div class="info">
+      <p><strong>In short:</strong> On Budget has no user accounts, no ads, no analytics and no tracking.
+        Your financial data is stored <strong>only on your device</strong> and we never receive it.
+        The only Internet connections are <strong>optional</strong> features, off by default, that you turn on with your own key.</p>
+    </div>
+
+    <h2>1. Who we are</h2>
+    <p>On Budget ("the app") is an open-source project maintained by <span data-dato="titular">its authors on GitHub</span>.
+      Contact: <a data-correo href="https://github.com/AngelFueFer/OnBudget/issues">GitHub (issues)</a>.</p>
+
+    <h2>2. Data stored on your device</h2>
+    <p>Everything below is stored in the phone's internal storage (the app's SQLite database and preferences).
+      It is not sent to any developer server, because there is none.</p>
+    <div class="tabla"><table>
+      <tr><th>Data</th><th>Purpose</th></tr>
+      <tr><td>Income, expenses, categories, budgets, fixed expenses, cards, savings accounts and investments you enter</td><td>Show and calculate your budget (the app's core feature).</td></tr>
+      <tr><td>Bank statements you import (CSV or Norma 43)</td><td>Create transactions. The file is read on the phone and not sent anywhere.</td></tr>
+      <tr><td>Receipt photos (camera or gallery)</td><td>Attach them to an expense. The camera or photos are only accessed when you ask.</td></tr>
+      <tr><td>Payment details detected in notifications (Android only, only if you enable it)</td><td>Suggest expenses and cards. See section 3.</td></tr>
+      <tr><td>Balances and transactions downloaded from your bank (only if you connect an account)</td><td>Import them and reconcile balances. See section 4.</td></tr>
+      <tr><td>Keys you configure (banking provider, market quotes)</td><td>Make those connections on your behalf. They only leave the phone towards the service they belong to.</td></tr>
+      <tr><td>Preferences (language, theme, currency, settings)</td><td>App operation.</td></tr>
+    </table></div>
+
+    <h2 id="notifications">3. Notification access (Android)</h2>
+    <p>This feature is <strong>off</strong> until you turn it on. Before asking for the permission, the app explains what it reads and why,
+      and then Android asks you to grant "Notification access" in its settings.</p>
+    <ul>
+      <li><strong>What is read:</strong> only notifications from banking apps, wallets (Google Wallet, Samsung Wallet…) and payment apps (e.g. PayPal) on a list built into the app. Notifications from any other app are ignored and never stored.</li>
+      <li><strong>What is stored:</strong> the title and text of those notifications are kept temporarily on the phone until you open the app. The app then extracts the card (e.g. "Visa ••1234"), amount and merchant, suggests them as an expense or card, and deletes the notification text.</li>
+      <li><strong>Why:</strong> only to log your expenses faster. It is never used for advertising or profiling and never leaves the device.</li>
+      <li><strong>How to turn it off:</strong> in the app (Settings → My cards → Notification reading) or in Android Settings → Notification access.</li>
+    </ul>
+    <p>So that detection works while the app is closed, the app can open Android's battery settings so you can remove the restriction if you wish. This is optional.</p>
+
+    <h2 id="bank">4. Bank connection (optional)</h2>
+    <p>If you choose to connect a bank account, the app uses <a href="https://enablebanking.com" rel="noopener">Enable Banking</a>,
+      an account information provider authorised under the EU PSD2 directive, with an application and key that you configure yourself.</p>
+    <ul>
+      <li>You authorise access on your own bank's website; the app never sees or stores your banking passwords.</li>
+      <li>The app requests the balance and transactions of the accounts you authorise from Enable Banking and stores them on your device.</li>
+      <li>Consent lasts at most 180 days (depending on the bank) and you can withdraw it earlier at your bank or by disconnecting the account in the app.</li>
+      <li>Data processed by your bank and by Enable Banking is governed by their own privacy policies.</li>
+      <li>This website's return page (<code>banco.html</code>) only displays the address so you can paste it into the app; it sends nothing anywhere.</li>
+    </ul>
+
+    <h2 id="quotes">5. Market quotes (optional)</h2>
+    <p>If you enable markets and enter your own <a href="https://eodhd.com" rel="noopener">EODHD</a> key, the app sends that provider
+      the identifiers of the securities you look up (ISIN or ticker) and your key, to get prices. No other data is sent.</p>
+
+    <h2 id="server">6. Your own server (optional, in development)</h2>
+    <p>The app lets you choose "this device only" (the default). When sync becomes available you will be able to connect a server
+      <strong>that you install and control</strong>. Data will travel end-to-end encrypted and the server will not be able to read amounts or descriptions.
+      If you store receipt photos on that server for text recognition, those photos are not end-to-end encrypted; the app will warn you first.
+      The developer runs no server and has no access to that data.</p>
+
+    <h2>7. What we don't do</h2>
+    <ul>
+      <li>No user accounts or sign-in.</li>
+      <li>No advertising, advertising IDs, analytics or automatic crash reports.</li>
+      <li>We don't sell or share data with anyone.</li>
+    </ul>
+
+    <h2>8. Android permissions</h2>
+    <div class="tabla"><table>
+      <tr><th>Permission</th><th>Purpose</th></tr>
+      <tr><td>Internet</td><td>Only for the optional features in sections 4, 5 and 6.</td></tr>
+      <tr><td>Notification access</td><td>Payment detection (section 3). You grant it in Android settings.</td></tr>
+      <tr><td>Camera, photos and files (through the system picker)</td><td>Take or attach receipt photos and import statements, only when you ask.</td></tr>
+    </table></div>
+
+    <h2>9. Security, retention and deletion</h2>
+    <p>Data stays on your device, protected by the operating system. Optional connections use HTTPS.
+      It is kept until you delete it in the app, clear the app's data or uninstall it.
+      Since we don't have it, we can't recover or delete it for you: see <a href="borrar-datos.html">how to delete your data</a>.</p>
+
+    <h2>10. Children</h2>
+    <p>The app is intended for adults and does not knowingly collect data from children.</p>
+
+    <h2>11. Your rights</h2>
+    <p>You control access, correction and deletion of your data directly in the app. For any question write to
+      <a data-correo href="https://github.com/AngelFueFer/OnBudget/issues">GitHub (issues)</a>. If you are in the European Union you can also complain to your data protection authority.</p>
+
+    <h2>12. Changes</h2>
+    <p>If this policy changes we will publish the new version on this page with its date. Significant changes will be announced in the app.</p>
+  </main>
+  <footer>
+    <p>© 2026 <span data-dato="titular">On Budget</span> · <a href="privacidad.html">Privacidad</a> · <a href="privacy.html">Privacy (EN)</a> · <a href="borrar-datos.html">Borrar datos</a> · <a href="soporte.html">Soporte</a></p>
+    <p class="tema">Tema: <button type="button" data-tema="auto">Automático</button> <button type="button" data-tema="claro">Claro</button> <button type="button" data-tema="oscuro">Oscuro</button></p>
+    <p>Código abierto con licencia <a href="https://github.com/AngelFueFer/OnBudget/blob/main/LICENSE">AGPL-3.0</a> · <a href="https://github.com/AngelFueFer/OnBudget">GitHub</a> · Sin cookies, sin anuncios y sin estadísticas de visitas.</p>
+  </footer>
+</body>
+</html>

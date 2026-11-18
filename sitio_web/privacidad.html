@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Política de privacidad · On Budget</title>
+  <meta name="description" content="Qué datos maneja On Budget, dónde se guardan y qué conexiones opcionales hace.">
+  <link rel="icon" href="favicon.png">
+  <link rel="stylesheet" href="estilos.css">
+  <script src="config.js"></script>
+  <script src="comun.js"></script>
+</head>
+<body>
+  <header class="barra">
+    <div class="barra-dentro">
+      <a class="marca" href="./"><img src="logo.png" alt="">On Budget</a>
+      <nav class="menu" aria-label="Secciones">
+        <a href="./">Inicio</a>
+        <a href="privacidad.html" aria-current="page">Privacidad</a>
+        <a href="borrar-datos.html">Borrar datos</a>
+        <a href="soporte.html">Soporte</a>
+        <a href="comunidad.html">Comunidad</a>
+        <a href="index.html#donar">Apoyar</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <h1>Política de privacidad de On Budget</h1>
+    <p class="nota">Última actualización: <span data-dato="fechaPrivacidad">17 de noviembre de 2026</span> · <a href="privacy.html" hreflang="en">English version</a></p>
+
+    <div class="info">
+      <p><strong>En pocas palabras:</strong> On Budget no tiene cuentas de usuario, ni anuncios, ni analítica, ni rastreo.
+        Tus datos financieros se guardan <strong>solo en tu dispositivo</strong> y nosotros no los recibimos.
+        Las únicas conexiones a Internet son funciones <strong>opcionales</strong>, desactivadas de inicio, que tú activas con tu propia clave.</p>
+    </div>
+
+    <h2>1. Responsable</h2>
+    <p>La app On Budget («la app») es un proyecto de código abierto mantenido por <span data-dato="titular">sus autores en GitHub</span>.
+      Contacto: <a data-correo href="https://github.com/AngelFueFer/OnBudget/issues">GitHub (issues)</a>.</p>
+
+    <h2>2. Datos que se guardan en tu dispositivo</h2>
+    <p>Todo lo siguiente se guarda en la memoria interna del móvil (base de datos SQLite y preferencias de la app).
+      No se envía a ningún servidor del desarrollador, porque no existe ninguno.</p>
+    <div class="tabla"><table>
+      <tr><th>Dato</th><th>Para qué se usa</th></tr>
+      <tr><td>Ingresos, gastos, categorías, presupuestos, gastos fijos, tarjetas, cuentas de ahorro e inversiones que introduces</td><td>Mostrar y calcular tu presupuesto. Es la función principal de la app.</td></tr>
+      <tr><td>Extractos bancarios que importas (CSV o Norma 43)</td><td>Crear movimientos. El archivo se lee en el móvil y no se envía a ningún sitio.</td></tr>
+      <tr><td>Fotos de tiquets (cámara o galería)</td><td>Adjuntarlas a un gasto. Solo se accede a la cámara o a las fotos cuando tú lo pides.</td></tr>
+      <tr><td>Datos de pago detectados en notificaciones (solo Android y solo si lo activas)</td><td>Proponerte gastos y tarjetas. Ver apartado 3.</td></tr>
+      <tr><td>Saldos y movimientos descargados de tu banco (solo si conectas una cuenta)</td><td>Importarlos y cuadrar el saldo. Ver apartado 4.</td></tr>
+      <tr><td>Claves que configuras (proveedor bancario, cotizaciones)</td><td>Hacer esas conexiones en tu nombre. No salen del móvil salvo hacia el servicio al que pertenecen.</td></tr>
+      <tr><td>Preferencias (idioma, tema, moneda, ajustes)</td><td>Funcionamiento de la app.</td></tr>
+    </table></div>
+
+    <h2 id="notificaciones">3. Acceso a las notificaciones (Android)</h2>
+    <p>Esta función está <strong>desactivada</strong> hasta que la activas tú. Antes de pedirte el permiso, la app te explica qué lee y para qué,
+      y después Android te pide conceder el «Acceso a notificaciones» en sus ajustes.</p>
+    <ul>
+      <li><strong>Qué se lee:</strong> solo las notificaciones de las apps de bancos, wallets (Google Wallet, Samsung Wallet…) y apps de pago (p. ej. PayPal) de una lista incluida en la app. Las notificaciones de cualquier otra app se ignoran y no se guardan.</li>
+      <li><strong>Qué se guarda:</strong> de esas notificaciones, el título y el texto se guardan temporalmente en el móvil hasta que abres la app. Al abrirla se extraen la tarjeta (p. ej. «Visa ••1234»), el importe y el comercio, se te proponen como gasto o tarjeta, y el texto de la notificación se borra.</li>
+      <li><strong>Para qué:</strong> solo para apuntar tus gastos más rápido. No se usa para publicidad, perfiles ni ningún otro fin, y nunca sale del dispositivo.</li>
+      <li><strong>Cómo desactivarlo:</strong> desde la app (Configuración → Mis tarjetas → Lectura de notificaciones) o en Ajustes de Android → Acceso a notificaciones.</li>
+    </ul>
+    <p>Para que la detección funcione con la app cerrada, la app puede abrir los ajustes de batería de Android para que, si quieres, quites la restricción. Es opcional.</p>
+
+    <h2 id="banco">4. Conexión con el banco (opcional)</h2>
+    <p>Si decides conectar una cuenta bancaria, la app usa <a href="https://enablebanking.com" rel="noopener">Enable Banking</a>,
+      un proveedor de información de cuentas autorizado bajo la directiva europea PSD2, con una aplicación y una clave que configuras tú.</p>
+    <ul>
+      <li>Das el permiso en la web de tu propio banco; la app nunca ve ni guarda tus contraseñas bancarias.</li>
+      <li>La app solicita a Enable Banking el saldo y los movimientos de las cuentas que autorices y los guarda en tu dispositivo.</li>
+      <li>El permiso dura como máximo 180 días (según el banco) y puedes retirarlo antes en tu banco o desconectando la cuenta en la app.</li>
+      <li>Los datos que procesan tu banco y Enable Banking se rigen por sus propias políticas de privacidad.</li>
+      <li>La página de vuelta de esta web (<code>banco.html</code>) solo muestra la dirección para copiarla en la app; no envía nada a ningún sitio.</li>
+    </ul>
+
+    <h2 id="cotizaciones">5. Cotizaciones de bolsa (opcional)</h2>
+    <p>Si activas los mercados y pones tu propia clave de <a href="https://eodhd.com" rel="noopener">EODHD</a>, la app envía a ese proveedor
+      los identificadores de los valores que consultas (ISIN o ticker) y tu clave, para obtener precios. No se envía ningún otro dato.</p>
+
+    <h2 id="servidor">6. Servidor propio (opcional, en desarrollo)</h2>
+    <p>La app permite elegir «solo en este dispositivo» (por defecto). Cuando esté disponible la sincronización, podrás conectar un servidor
+      <strong>que instales y controles tú</strong>. Los datos viajarán cifrados de extremo a extremo y el servidor no podrá leer importes ni conceptos.
+      Si guardas fotos de tiquets en ese servidor para reconocer su texto, esas fotos no van cifradas de extremo a extremo; la app te avisará antes.
+      El desarrollador no opera ningún servidor ni tiene acceso a esos datos.</p>
+
+    <h2>7. Lo que no hacemos</h2>
+    <ul>
+      <li>No hay cuentas de usuario ni inicio de sesión.</li>
+      <li>No hay publicidad, ni identificadores publicitarios, ni analítica, ni informes de fallos automáticos.</li>
+      <li>No vendemos ni compartimos datos con nadie.</li>
+    </ul>
+
+    <h2>8. Permisos de Android</h2>
+    <div class="tabla"><table>
+      <tr><th>Permiso</th><th>Para qué</th></tr>
+      <tr><td>Internet</td><td>Solo para las funciones opcionales de los apartados 4, 5 y 6.</td></tr>
+      <tr><td>Acceso a notificaciones</td><td>Detección de pagos (apartado 3). Lo concedes tú en los ajustes de Android.</td></tr>
+      <tr><td>Cámara, fotos y archivos (a través del selector del sistema)</td><td>Fotografiar o adjuntar tiquets e importar extractos, solo cuando lo pides.</td></tr>
+    </table></div>
+
+    <h2>9. Seguridad, conservación y borrado</h2>
+    <p>Los datos se quedan en tu dispositivo, protegidos por el sistema. Las conexiones opcionales usan HTTPS.
+      Se conservan hasta que los borras en la app, borras los datos de la app o la desinstalas.
+      Como no los tenemos, no podemos recuperarlos ni borrarlos por ti: mira <a href="borrar-datos.html">cómo borrar tus datos</a>.</p>
+
+    <h2>10. Menores</h2>
+    <p>La app está pensada para personas adultas y no recoge datos de forma consciente de menores.</p>
+
+    <h2>11. Tus derechos</h2>
+    <p>Tú controlas el acceso, la rectificación y la supresión de tus datos directamente desde la app. Para cualquier consulta escribe a
+      <a data-correo href="https://github.com/AngelFueFer/OnBudget/issues">GitHub (issues)</a>. Si estás en la Unión Europea, también puedes reclamar ante tu autoridad de protección de datos
+      (en España, la <a href="https://www.aepd.es" rel="noopener">AEPD</a>).</p>
+
+    <h2>12. Cambios</h2>
+    <p>Si esta política cambia, publicaremos la nueva versión en esta página con su fecha. Si el cambio es importante, la app lo avisará.</p>
+  </main>
+  <footer>
+    <p>© 2026 <span data-dato="titular">On Budget</span> · <a href="privacidad.html">Privacidad</a> · <a href="privacy.html">Privacy (EN)</a> · <a href="borrar-datos.html">Borrar datos</a> · <a href="soporte.html">Soporte</a></p>
+    <p class="tema">Tema: <button type="button" data-tema="auto">Automático</button> <button type="button" data-tema="claro">Claro</button> <button type="button" data-tema="oscuro">Oscuro</button></p>
+    <p>Código abierto con licencia <a href="https://github.com/AngelFueFer/OnBudget/blob/main/LICENSE">AGPL-3.0</a> · <a href="https://github.com/AngelFueFer/OnBudget">GitHub</a> · Sin cookies, sin anuncios y sin estadísticas de visitas.</p>
+  </footer>
+</body>
+</html>

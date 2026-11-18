@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Conexión con el banco · On Budget</title>
+  <link rel="icon" href="favicon.png">
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <!-- URL de vuelta de Open Banking: el banco redirige aquí con ?code=…&state=…
+       La página no envía nada a ningún sitio: solo muestra la dirección para copiarla en la app. -->
+  <main>
+    <h1 id="titulo">Conexión con el banco</h1>
+    <p id="mensaje">Copia esta dirección y pégala en la app para terminar de conectar tu cuenta.</p>
+    <p><textarea id="direccion" rows="4" readonly style="width:100%"></textarea></p>
+    <p><button id="copiar" type="button">Copiar</button></p>
+    <p class="nota">El código caduca en unos minutos y solo sirve una vez.</p>
+  </main>
+  <script>
+    var parametros = new URLSearchParams(location.search);
+    var campo = document.getElementById('direccion');
+    campo.value = location.href;
+    if (parametros.get('error')) {
+      document.getElementById('titulo').textContent = 'No se ha conectado la cuenta';
+      document.getElementById('mensaje').textContent = 'El banco ha cancelado la autorización. Vuelve a la app e inténtalo de nuevo.';
+    }
+    document.getElementById('copiar').addEventListener('click', function () {
+      campo.select();
+      if (navigator.clipboard) navigator.clipboard.writeText(campo.value);
+      else document.execCommand('copy');
+      this.textContent = 'Copiado';
+    });
+  </script>
+</body>
+</html>

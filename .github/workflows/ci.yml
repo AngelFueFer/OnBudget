@@ -1,0 +1,35 @@
+# Comprueba cada PR de la app: análisis y tests.
+# Solo lectura y sin secretos, así es seguro también para PRs que vienen de forks.
+name: CI app
+
+on:
+  pull_request:
+    paths-ignore:
+      - 'servidor/**'
+      - 'sitio_web/**'
+      - '**.md'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  comprobar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: subosito/flutter-action@v2
+        with:
+          # Misma versión que apk.yml
+          flutter-version: '3.47.5'
+          channel: stable
+          cache: true
+
+      - run: flutter pub get
+      - run: flutter analyze --no-fatal-warnings --no-fatal-infos
+      - run: flutter test

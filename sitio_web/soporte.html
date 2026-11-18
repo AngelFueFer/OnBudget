@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Soporte · On Budget</title>
+  <meta name="description" content="Ayuda, preguntas frecuentes y contacto de On Budget.">
+  <link rel="icon" href="favicon.png">
+  <link rel="stylesheet" href="estilos.css">
+  <script src="config.js"></script>
+  <script src="comun.js"></script>
+</head>
+<body>
+  <header class="barra">
+    <div class="barra-dentro">
+      <a class="marca" href="./"><img src="logo.png" alt="">On Budget</a>
+      <nav class="menu" aria-label="Secciones">
+        <a href="./">Inicio</a>
+        <a href="privacidad.html">Privacidad</a>
+        <a href="borrar-datos.html">Borrar datos</a>
+        <a href="soporte.html" aria-current="page">Soporte</a>
+        <a href="comunidad.html">Comunidad</a>
+        <a href="index.html#donar">Apoyar</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <h1>Soporte</h1>
+    <p>¿Un problema, una duda o una idea? Tienes dos caminos:</p>
+    <div class="rejilla">
+      <div class="tarjeta"><h3>Abre un issue en GitHub</h3><p>Para fallos y propuestas. Así lo ve también la comunidad y nadie lo reporta dos veces.</p>
+        <p style="margin-top:10px"><a class="boton" href="https://github.com/AngelFueFer/OnBudget/issues/new/choose">Abrir un issue</a></p></div>
+      <div class="tarjeta"><h3>Escríbenos</h3><p>Para lo privado o si no usas GitHub: <a data-correo href="https://github.com/AngelFueFer/OnBudget/issues">GitHub (issues)</a>. Respondemos normalmente en 2–3 días laborables.</p></div>
+    </div>
+    <p class="nota">Para ayudarte antes, indica el modelo del móvil, la versión de Android y la versión de la app (Ajustes de Android → Aplicaciones → On Budget).
+      <strong>Nunca</strong> nos mandes capturas con tus importes reales, IBAN o claves.</p>
+
+    <h2>Preguntas frecuentes</h2>
+
+    <details><summary>¿Dónde se guardan mis datos?</summary>
+      <p>Solo en tu dispositivo. La app no tiene cuentas ni servidores del desarrollador, así que nadie más puede ver tus datos.</p></details>
+
+    <details><summary>Si cambio de móvil o desinstalo la app, ¿pierdo los datos?</summary>
+      <p>Al desinstalar, Android borra los datos de la app. Antes de cambiar de móvil, usa la copia de seguridad de tu dispositivo. La sincronización con tu propio servidor, para llevar los datos entre móviles, está en desarrollo.</p></details>
+
+    <details><summary>¿Cómo funciona la detección de pagos por notificaciones?</summary>
+      <p>Solo en Android y solo si la activas. La app lee las notificaciones de tu banco, wallet o app de pago, extrae la tarjeta, el importe y el comercio,
+        y te propone el gasto. No lee las de otras apps y el texto se borra en cuanto se procesa.
+        Se desactiva en la app o en Ajustes de Android → Acceso a notificaciones.</p></details>
+
+    <details><summary>Mi banco no se detecta en las notificaciones</summary>
+      <p>Cada banco escribe sus avisos a su manera. Abre un issue con el <strong>formato</strong> de la notificación (cambia importes, comercio y dígitos de la tarjeta por otros inventados) y el nombre de la app del banco.</p></details>
+
+    <details><summary>La detección deja de funcionar con la app cerrada</summary>
+      <p>Algunos fabricantes (Xiaomi, Huawei, Samsung…) cierran las apps en segundo plano. En la app, pulsa el aviso «Batería con restricciones» y quita la restricción para On Budget en la lista de Android.</p></details>
+
+    <details><summary>¿Qué formatos de extracto puedo importar?</summary>
+      <p>CSV y Norma 43 (el formato AEB que ofrecen casi todos los bancos españoles).</p></details>
+
+    <details><summary>¿Cómo conecto mi banco directamente?</summary>
+      <p>Es una función avanzada y opcional (Open Banking / PSD2). Necesitas una aplicación gratuita de Enable Banking para uso personal.
+        Los pasos están en el <a href="https://github.com/AngelFueFer/OnBudget#conexión-con-los-bancos-open-banking--psd2">README del proyecto</a>.
+        Como URL de vuelta puedes usar <code>https://angelfuefer.github.io/OnBudget/banco.html</code>.</p></details>
+
+    <details><summary>¿Por qué me pide una clave para las inversiones?</summary>
+      <p>Las cotizaciones vienen de un proveedor externo (EODHD). Viene desactivado; si quieres precios actualizados, pon tu propia clave.</p></details>
+
+    <details><summary>¿Cómo borro todos mis datos?</summary>
+      <p>Mira <a href="borrar-datos.html">Borrar tus datos</a>.</p></details>
+  </main>
+  <footer>
+    <p>© 2026 <span data-dato="titular">On Budget</span> · <a href="privacidad.html">Privacidad</a> · <a href="privacy.html">Privacy (EN)</a> · <a href="borrar-datos.html">Borrar datos</a> · <a href="soporte.html">Soporte</a></p>
+    <p class="tema">Tema: <button type="button" data-tema="auto">Automático</button> <button type="button" data-tema="claro">Claro</button> <button type="button" data-tema="oscuro">Oscuro</button></p>
+    <p>Código abierto con licencia <a href="https://github.com/AngelFueFer/OnBudget/blob/main/LICENSE">AGPL-3.0</a> · <a href="https://github.com/AngelFueFer/OnBudget">GitHub</a> · Sin cookies, sin anuncios y sin estadísticas de visitas.</p>
+  </footer>
+</body>
+</html>

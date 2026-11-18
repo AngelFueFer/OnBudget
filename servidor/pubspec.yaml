@@ -1,0 +1,18 @@
+name: onbudget_servidor
+description: Servidor autoalojado de sincronización de On Budget. Solo guarda datos cifrados.
+publish_to: 'none'
+version: 0.3.0
+
+environment:
+  sdk: ^3.9.0
+dependencies:
+  args: ^2.7.0
+  crypto: ^3.0.8
+  path: ^1.9.1
+  shelf: ^1.4.3
+  shelf_router: ^1.1.5
+  sqlite3: ^2.9.0
+dev_dependencies:
+  http: ^1.6.0
+  lints: ^6.1.0
+  test: ^1.33.0

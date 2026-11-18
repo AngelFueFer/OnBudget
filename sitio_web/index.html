@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>On Budget · Presupuesto familiar sin anuncios</title>
+  <meta name="description" content="Controla los gastos e ingresos de casa. Tus datos se quedan en tu móvil: sin cuentas, sin anuncios y sin rastreo.">
+  <link rel="icon" href="favicon.png">
+  <link rel="stylesheet" href="estilos.css">
+  <script src="config.js"></script>
+  <script src="comun.js"></script>
+</head>
+<body>
+  <header class="barra">
+    <div class="barra-dentro">
+      <a class="marca" href="./"><img src="logo.png" alt="">On Budget</a>
+      <nav class="menu" aria-label="Secciones">
+        <a href="./" aria-current="page">Inicio</a>
+        <a href="privacidad.html">Privacidad</a>
+        <a href="borrar-datos.html">Borrar datos</a>
+        <a href="soporte.html">Soporte</a>
+        <a href="comunidad.html">Comunidad</a>
+        <a href="index.html#donar">Apoyar</a>
+      </nav>
+    </div>
+  </header>
+  <section class="portada">
+    <img src="logo.png" alt="Logo de On Budget: una casa con un gráfico de anillo">
+    <h1>On Budget</h1>
+    <p>La economía de tu casa, clara y en tu bolsillo. Apunta un gasto en tres toques y mira cuánto te queda este mes.</p>
+    <div class="botones">
+      <a class="boton claro" data-enlace="play" data-si="play">Descargar en Google Play</a>
+      <a class="boton claro" href="#probar" data-si-no="play">Probar la beta en Google Play</a>
+      <a class="boton claro" href="https://github.com/AngelFueFer/OnBudget/releases/latest/download/presupuesto-familiar.apk">Descargar APK</a>
+    </div>
+  </section>
+
+  <main class="ancho">
+    <h2 id="capturas">Así es la app</h2>
+    <div class="galeria" tabindex="0" aria-label="Capturas de la app">
+      <figure>
+        <a class="movil" href="capturas/principal-claro.png" title="Ver en grande">
+          <img class="captura-clara" src="capturas/principal-claro.png" width="1080" height="2160" loading="lazy" alt="Pantalla principal: presupuesto del mes, gasto por categorías y últimos movimientos">
+          <img class="captura-oscura" src="capturas/principal-oscuro.png" width="1080" height="2160" loading="lazy" alt="Pantalla principal: presupuesto del mes, gasto por categorías y últimos movimientos (tema oscuro)">
+        </a>
+        <figcaption>Tu mes, de un vistazo</figcaption>
+      </figure>
+      <figure>
+        <a class="movil" href="capturas/nuevo-gasto-claro.png" title="Ver en grande">
+          <img class="captura-clara" src="capturas/nuevo-gasto-claro.png" width="1080" height="2160" loading="lazy" alt="Formulario de nuevo gasto con concepto, categoría, importe, método de pago y foto del tiquet">
+          <img class="captura-oscura" src="capturas/nuevo-gasto-oscuro.png" width="1080" height="2160" loading="lazy" alt="Formulario de nuevo gasto con concepto, categoría, importe, método de pago y foto del tiquet (tema oscuro)">
+        </a>
+        <figcaption>Apunta un gasto en 3 toques</figcaption>
+      </figure>
+      <figure>
+        <a class="movil" href="capturas/temas-claro.png" title="Ver en grande">
+          <img class="captura-clara" src="capturas/temas-claro.png" width="1080" height="2160" loading="lazy" alt="Temas: modo oscuro y color de acento">
+          <img class="captura-oscura" src="capturas/temas-oscuro.png" width="1080" height="2160" loading="lazy" alt="Temas: modo oscuro y color de acento (tema oscuro)">
+        </a>
+        <figcaption>Claro, oscuro y tu color</figcaption>
+      </figure>
+      <figure>
+        <a class="movil" href="capturas/configuracion-claro.png" title="Ver en grande">
+          <img class="captura-clara" src="capturas/configuracion-claro.png" width="1080" height="2160" loading="lazy" alt="Configuración: temas, idioma, moneda, mercados, bancos, cuentas y tarjetas">
+          <img class="captura-oscura" src="capturas/configuracion-oscuro.png" width="1080" height="2160" loading="lazy" alt="Configuración: temas, idioma, moneda, mercados, bancos, cuentas y tarjetas (tema oscuro)">
+        </a>
+        <figcaption>Todo a tu medida</figcaption>
+      </figure>
+      <figure>
+        <a class="movil" href="capturas/bienvenida-claro.png" title="Ver en grande">
+          <img class="captura-clara" src="capturas/bienvenida-claro.png" width="1080" height="2160" loading="lazy" alt="Pantalla de bienvenida con el logo, el modo oscuro y el idioma">
+          <img class="captura-oscura" src="capturas/bienvenida-oscuro.png" width="1080" height="2160" loading="lazy" alt="Pantalla de bienvenida con el logo, el modo oscuro y el idioma (tema oscuro)">
+        </a>
+        <figcaption>En tu idioma</figcaption>
+      </figure>
+    </div>
+    <p class="nota">Capturas reales de la app con datos de ejemplo. Se ven en claro u oscuro según el tema que uses.</p>
+
+    <h2 id="funciones">Qué puedes hacer</h2>
+    <div class="rejilla">
+      <div class="tarjeta"><span class="icono" aria-hidden="true">⚡</span><h3>Gastos en 3 toques</h3><p>Ingresos y gastos por categorías con accesos rápidos. Adjunta la foto del tiquet si quieres.</p></div>
+      <div class="tarjeta"><span class="icono" aria-hidden="true">📊</span><h3>Presupuesto mensual</h3><p>Reparte el mes entre cuenta mensual y ahorro. El remanente y el déficit se calculan solos.</p></div>
+      <div class="tarjeta"><span class="icono" aria-hidden="true">🗓️</span><h3>Gastos fijos y tarjetas</h3><p>Alquiler, recibos y suscripciones previstos, y cada tarjeta con sus gastos.</p></div>
+      <div class="tarjeta"><span class="icono" aria-hidden="true">🏦</span><h3>Importa tu banco</h3><p>Extractos en CSV y Norma 43, sin duplicados y con la categoría sugerida.</p></div>
+      <div class="tarjeta"><span class="icono" aria-hidden="true">🔔</span><h3>Pagos detectados (Android)</h3><p>Si lo activas, te propone los pagos que avisan tu banco o tu wallet. Opcional.</p></div>
+      <div class="tarjeta"><span class="icono" aria-hidden="true">🔗</span><h3>Conexión con el banco</h3><p>Opcional y avanzada: descarga saldo y movimientos por Open Banking (PSD2) con tu propia clave.</p></div>
+      <div class="tarjeta"><span class="icono" aria-hidden="true">📈</span><h3>Ahorro e inversiones</h3><p>Cuentas de ahorro y seguimiento de inversiones, con cotizaciones si pones tu clave.</p></div>
+      <div class="tarjeta"><span class="icono" aria-hidden="true">🌍</span><h3>12 idiomas, claro y oscuro</h3><p>Español, inglés, francés, alemán, portugués, italiano, neerlandés, polaco, catalán, turco, chino y japonés. Tema claro, oscuro y color de acento a tu gusto.</p></div>
+    </div>
+
+    <h2 id="privacidad">Tus datos son tuyos</h2>
+    <div class="rejilla">
+      <div class="tarjeta"><h3>Sin cuentas</h3><p>No hay registro ni inicio de sesión. Abres la app y empiezas.</p></div>
+      <div class="tarjeta"><h3>Todo en tu móvil</h3><p>Tus movimientos se guardan en el dispositivo. No tenemos servidores que los reciban.</p></div>
+      <div class="tarjeta"><h3>Sin anuncios ni rastreo</h3><p>Ni publicidad, ni analítica, ni SDK de terceros que te sigan.</p></div>
+      <div class="tarjeta"><h3>Red solo si tú quieres</h3><p>Las conexiones (banco, cotizaciones) vienen apagadas y usan tu propia clave.</p></div>
+    </div>
+    <p><a href="privacidad.html">Lee la política de privacidad completa</a>.</p>
+
+    <h2 id="probar">Prueba la beta en Android</h2>
+    <p>On Budget está en prueba cerrada en Google Play. Si quieres probarla antes que nadie y ayudarnos a pulirla:</p>
+    <ol class="pasos">
+      <li><h3>Únete al grupo de testers</h3>
+        <p>Entra con la cuenta de Google que usas en tu móvil: <a data-enlace="grupoTesters" data-sin-enlace="enlace pendiente">Grupo de testers de On Budget</a>.</p></li>
+      <li><h3>Acepta la invitación de prueba</h3>
+        <p>Abre <a data-enlace="pruebaPlay" data-sin-enlace="enlace pendiente">la página de la prueba</a> y pulsa <strong>Convertirse en tester</strong>.</p></li>
+      <li><h3>Instálala desde Google Play</h3>
+        <p>Desde esa misma página, o buscando «On Budget» en Play Store (puede tardar unos minutos en aparecer).</p></li>
+      <li><h3>Déjala instalada al menos 14 días</h3>
+        <p>Google exige que los testers sigan en la prueba dos semanas antes de publicar la app. Úsala con normalidad y cuéntanos lo que veas en <a href="soporte.html">Soporte</a>.</p></li>
+    </ol>
+
+    <section class="donar" id="donar">
+      <h2>¿Te ayuda On Budget? Invítame a un café</h2>
+      <p>La app es gratis, sin anuncios y no vende tus datos. Si te resulta útil, puedes apoyar su desarrollo con lo que quieras.</p>
+      <div class="botones">
+        <a class="boton" data-enlace="paypal" data-si="paypal">Donar con PayPal</a>
+        <a class="boton" data-enlace="buyMeACoffee" data-si="buyMeACoffee">Buy Me a Coffee</a>
+        <a class="boton borde" href="https://github.com/AngelFueFer/OnBudget" data-si-no="paypal">Dale una ⭐ en GitHub</a>
+      </div>
+      <p class="nota">Las donaciones son voluntarias y no desbloquean nada: la app es igual para todo el mundo.</p>
+    </section>
+  </main>
+  <footer>
+    <p>© 2026 <span data-dato="titular">On Budget</span> · <a href="privacidad.html">Privacidad</a> · <a href="privacy.html">Privacy (EN)</a> · <a href="borrar-datos.html">Borrar datos</a> · <a href="soporte.html">Soporte</a></p>
+    <p class="tema">Tema: <button type="button" data-tema="auto">Automático</button> <button type="button" data-tema="claro">Claro</button> <button type="button" data-tema="oscuro">Oscuro</button></p>
+    <p>Código abierto con licencia <a href="https://github.com/AngelFueFer/OnBudget/blob/main/LICENSE">AGPL-3.0</a> · <a href="https://github.com/AngelFueFer/OnBudget">GitHub</a> · Sin cookies, sin anuncios y sin estadísticas de visitas.</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,40 @@
+name: 🏦 Mi banco no se detecta
+description: Las notificaciones o el extracto de tu banco no se leen bien
+labels: [banco]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Necesitamos el **formato**, no tus datos. Cambia importes, comercios, IBAN y dígitos de tarjeta por otros inventados
+        (por ejemplo `12,34 €`, `COMERCIO EJEMPLO`, `••0000`).
+  - type: input
+    id: banco
+    attributes:
+      label: Banco o app de pago
+      placeholder: BBVA, CaixaBank, Revolut, Google Wallet…
+    validations:
+      required: true
+  - type: dropdown
+    id: tipo
+    attributes:
+      label: ¿Qué falla?
+      options:
+        - Notificación de pago
+        - Extracto CSV
+        - Extracto Norma 43
+        - Conexión con el banco (Open Banking)
+    validations:
+      required: true
+  - type: textarea
+    id: formato
+    attributes:
+      label: Formato (con datos inventados)
+      description: Título y texto de la notificación, o la cabecera y una línea del extracto.
+      render: text
+    validations:
+      required: true
+  - type: input
+    id: paquete
+    attributes:
+      label: Paquete de la app del banco (opcional)
+      description: Lo ves en la URL de Google Play, p. ej. com.bbva.bbvacontigo

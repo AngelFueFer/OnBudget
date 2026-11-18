@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Comunidad · On Budget</title>
+  <meta name="description" content="On Budget es código abierto. Cómo participar: probar la beta, reportar fallos, traducir, programar o apoyar el proyecto.">
+  <link rel="icon" href="favicon.png">
+  <link rel="stylesheet" href="estilos.css">
+  <script src="config.js"></script>
+  <script src="comun.js"></script>
+</head>
+<body>
+  <header class="barra">
+    <div class="barra-dentro">
+      <a class="marca" href="./"><img src="logo.png" alt="">On Budget</a>
+      <nav class="menu" aria-label="Secciones">
+        <a href="./">Inicio</a>
+        <a href="privacidad.html">Privacidad</a>
+        <a href="borrar-datos.html">Borrar datos</a>
+        <a href="soporte.html">Soporte</a>
+        <a href="comunidad.html" aria-current="page">Comunidad</a>
+        <a href="index.html#donar">Apoyar</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <h1>Una app abierta, hecha entre todos</h1>
+    <p>On Budget es <strong>software libre</strong> con licencia <a href="https://github.com/AngelFueFer/OnBudget/blob/main/LICENSE">AGPL-3.0</a>:
+      puedes ver el código, usarlo, modificarlo y compartirlo, siempre que tus cambios también queden abiertos.
+      Así nadie puede convertirla en una app cerrada con anuncios.</p>
+    <div class="botones" style="justify-content:flex-start">
+      <a class="boton" href="https://github.com/AngelFueFer/OnBudget">Ver el código en GitHub</a>
+      <a class="boton borde" href="https://github.com/AngelFueFer/OnBudget/releases/latest">Descargar el APK</a>
+    </div>
+
+    <h2>Cómo puedes ayudar</h2>
+    <div class="rejilla">
+      <div class="tarjeta"><span class="icono" aria-hidden="true">🧪</span><h3>Prueba la beta</h3><p>Instálala desde Google Play y úsala unos días. <a href="index.html#probar">Cómo unirte</a>.</p></div>
+      <div class="tarjeta"><span class="icono" aria-hidden="true">🐞</span><h3>Reporta fallos</h3><p>Un buen informe vale oro. <a href="https://github.com/AngelFueFer/OnBudget/issues/new/choose">Abrir un issue</a>.</p></div>
+      <div class="tarjeta"><span class="icono" aria-hidden="true">🏦</span><h3>Añade tu banco</h3><p>Comparte el formato de las notificaciones o del extracto de tu banco (sin datos reales).</p></div>
+      <div class="tarjeta"><span class="icono" aria-hidden="true">🌍</span><h3>Traduce</h3><p>Ya hay español, inglés, francés y alemán. Corrige o añade idiomas en <code>lib/l10n/</code>.</p></div>
+      <div class="tarjeta"><span class="icono" aria-hidden="true">💻</span><h3>Programa</h3><p>Flutter y Dart, sin gestor de estado externo. Lee la <a href="https://github.com/AngelFueFer/OnBudget/blob/main/CONTRIBUTING.md">guía para contribuir</a>.</p></div>
+      <div class="tarjeta"><span class="icono" aria-hidden="true">☕</span><h3>Apoya el proyecto</h3><p>Si te ahorra dinero, <a href="index.html#donar">invítame a un café</a>.</p></div>
+    </div>
+
+    <h2>Los principios que no se negocian</h2>
+    <ul>
+      <li><strong>Privacidad:</strong> sin cuentas, sin anuncios, sin analítica. Los datos en el dispositivo.</li>
+      <li><strong>Rapidez:</strong> apuntar un gasto en 3 toques.</li>
+      <li><strong>Para todos:</strong> todo texto visible en los 4 idiomas, tema claro y oscuro.</li>
+      <li><strong>Red solo opcional</strong> y con la clave del propio usuario.</li>
+    </ul>
+
+    <h2>Normas de convivencia</h2>
+    <p>Queremos un sitio amable para cualquiera. Todas las conversaciones del proyecto siguen el
+      <a href="https://github.com/AngelFueFer/OnBudget/blob/main/CODE_OF_CONDUCT.md">código de conducta</a>.
+      Para fallos de seguridad, no abras un issue público: sigue la <a href="https://github.com/AngelFueFer/OnBudget/blob/main/SECURITY.md">política de seguridad</a>.</p>
+
+    <p class="nota">¿Curiosidad por cómo se publica en Google Play? Está todo en la <a href="publicar.html">guía de publicación</a>.</p>
+  </main>
+  <footer>
+    <p>© 2026 <span data-dato="titular">On Budget</span> · <a href="privacidad.html">Privacidad</a> · <a href="privacy.html">Privacy (EN)</a> · <a href="borrar-datos.html">Borrar datos</a> · <a href="soporte.html">Soporte</a></p>
+    <p class="tema">Tema: <button type="button" data-tema="auto">Automático</button> <button type="button" data-tema="claro">Claro</button> <button type="button" data-tema="oscuro">Oscuro</button></p>
+    <p>Código abierto con licencia <a href="https://github.com/AngelFueFer/OnBudget/blob/main/LICENSE">AGPL-3.0</a> · <a href="https://github.com/AngelFueFer/OnBudget">GitHub</a> · Sin cookies, sin anuncios y sin estadísticas de visitas.</p>
+  </footer>
+</body>
+</html>

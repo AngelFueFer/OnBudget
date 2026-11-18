@@ -1,0 +1,22 @@
+name: 💡 Propuesta o idea
+description: Algo que haría la app más útil
+labels: [propuesta]
+body:
+  - type: textarea
+    id: problema
+    attributes:
+      label: ¿Qué problema resuelve?
+      description: Cuéntanos la situación en la que lo echas de menos.
+    validations:
+      required: true
+  - type: textarea
+    id: propuesta
+    attributes:
+      label: ¿Cómo te lo imaginas?
+  - type: checkboxes
+    id: principios
+    attributes:
+      label: Principios del proyecto
+      options:
+        - label: La idea funciona sin cuentas, sin anuncios y con los datos en el dispositivo.
+          required: true

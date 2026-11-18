@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Borrar tus datos · On Budget</title>
+  <meta name="description" content="Cómo borrar todos los datos de On Budget. La app no tiene cuentas y no guarda datos en servidores del desarrollador.">
+  <link rel="icon" href="favicon.png">
+  <link rel="stylesheet" href="estilos.css">
+  <script src="config.js"></script>
+  <script src="comun.js"></script>
+</head>
+<body>
+  <header class="barra">
+    <div class="barra-dentro">
+      <a class="marca" href="./"><img src="logo.png" alt="">On Budget</a>
+      <nav class="menu" aria-label="Secciones">
+        <a href="./">Inicio</a>
+        <a href="privacidad.html">Privacidad</a>
+        <a href="borrar-datos.html" aria-current="page">Borrar datos</a>
+        <a href="soporte.html">Soporte</a>
+        <a href="comunidad.html">Comunidad</a>
+        <a href="index.html#donar">Apoyar</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <h1>Cómo borrar tus datos</h1>
+    <div class="info">
+      <p>On Budget <strong>no tiene cuentas de usuario</strong> y el desarrollador <strong>no guarda ningún dato tuyo</strong> en servidores.
+        Todo está en tu móvil, así que puedes borrarlo tú en cualquier momento, sin pedírselo a nadie.</p>
+    </div>
+
+    <h2>Borrar todo</h2>
+    <ol class="pasos">
+      <li><h3>Borrar los datos de la app (Android)</h3>
+        <p>Ajustes de Android → Aplicaciones → On Budget → Almacenamiento → <strong>Borrar datos</strong>. La app vuelve a empezar desde cero.</p></li>
+      <li><h3>O desinstalarla</h3>
+        <p>Al desinstalar On Budget, Android borra su base de datos, sus preferencias y los tiquets guardados por la app.</p></li>
+      <li><h3>Copias de seguridad</h3>
+        <p>Si tu móvil hace copias automáticas en tu cuenta de Google, bórralas también desde donde las guardaste.</p></li>
+    </ol>
+
+    <h2>Borrar solo una parte</h2>
+    <ul>
+      <li><strong>Movimientos, categorías, gastos fijos, tarjetas o cuentas:</strong> desliza o mantén pulsado el elemento en la app y elige borrar.</li>
+      <li><strong>Lectura de notificaciones:</strong> desactívala en Configuración → Mis tarjetas; las notificaciones pendientes se borran al procesarse. Quita también el permiso en Ajustes de Android → Acceso a notificaciones.</li>
+      <li><strong>Conexión con el banco:</strong> desconecta la cuenta en su menú de la app y, si quieres, retira el permiso en la web de tu banco.</li>
+      <li><strong>Claves de cotizaciones o del banco:</strong> bórralas en Configuración.</li>
+    </ul>
+
+    <h2>Servicios de terceros que tú configuras</h2>
+    <p>Si usaste la conexión con el banco (Enable Banking) o las cotizaciones (EODHD), esos servicios tratan los datos según sus propias políticas.
+      Puedes pedirles el borrado directamente a ellos. Si usas tu propio servidor de sincronización, borra la bóveda desde su panel.</p>
+
+    <h2>¿Dudas?</h2>
+    <p>Escríbenos a <a data-correo href="https://github.com/AngelFueFer/OnBudget/issues">GitHub (issues)</a> y te ayudamos.</p>
+  </main>
+  <footer>
+    <p>© 2026 <span data-dato="titular">On Budget</span> · <a href="privacidad.html">Privacidad</a> · <a href="privacy.html">Privacy (EN)</a> · <a href="borrar-datos.html">Borrar datos</a> · <a href="soporte.html">Soporte</a></p>
+    <p class="tema">Tema: <button type="button" data-tema="auto">Automático</button> <button type="button" data-tema="claro">Claro</button> <button type="button" data-tema="oscuro">Oscuro</button></p>
+    <p>Código abierto con licencia <a href="https://github.com/AngelFueFer/OnBudget/blob/main/LICENSE">AGPL-3.0</a> · <a href="https://github.com/AngelFueFer/OnBudget">GitHub</a> · Sin cookies, sin anuncios y sin estadísticas de visitas.</p>
+  </footer>
+</body>
+</html>

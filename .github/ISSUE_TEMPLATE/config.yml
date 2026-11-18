@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Fallo de seguridad
+    url: https://github.com/AngelFueFer/OnBudget/security/advisories/new
+    about: Infórmanos en privado. No abras un issue público.
+  - name: Ayuda y preguntas frecuentes
+    url: https://angelfuefer.github.io/OnBudget/soporte.html
+    about: Puede que tu duda ya esté resuelta.

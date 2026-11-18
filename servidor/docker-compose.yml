@@ -1,0 +1,29 @@
+# Arranque rápido del servidor de On Budget con Docker Compose.
+# Uso: docker compose up -d   (desde esta carpeta)
+# Después: docker compose exec onbudget onbudget-servidor invitacion crear
+# El HTTPS lo pone Nginx o Tailscale delante (ver README.md).
+
+services:
+  onbudget:
+    # Imagen ya compilada que publica GitHub Actions (amd64).
+    # Para compilarla tú desde el código: comenta "image" y descomenta "build".
+    image: ghcr.io/angelfuefer/onbudget-servidor:latest
+    # build: .
+    container_name: onbudget
+    restart: unless-stopped
+    environment:
+      # Si Nginx/Tailscale está delante, pasa la IP real del cliente en esta cabecera
+      CABECERA_IP: X-Real-IP
+      # Panel web /admin (opcional). Genera el valor con: docker compose run --rm onbudget admin hash
+      # y escribe cada $ como $$
+      # ADMIN_TOKEN: $$pbkdf2-sha256$$600000$$...
+      # HTTPS propio sin proxy (opcional): monta los certificados y descomenta
+      # TLS_CERTIFICADO: /certificados/fullchain.pem
+      # TLS_CLAVE: /certificados/privkey.pem
+    volumes:
+      - ./datos:/datos
+      # - ./certificados:/certificados:ro
+    ports:
+      # Solo en local: el proxy con HTTPS es quien se expone a internet.
+      # Para probar en tu red local sin proxy, cambia a "8080:8080".
+      - "127.0.0.1:8080:8080"

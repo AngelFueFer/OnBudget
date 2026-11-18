@@ -1,0 +1,61 @@
+# Servidor de sincronización: análisis, tests y la imagen Docker (amd64).
+# En main (y con etiquetas servidor-v*) la imagen se publica en GitHub Container Registry:
+#   ghcr.io/<dueño>/onbudget-servidor:latest  y  :<versión del pubspec>
+name: Servidor
+
+on:
+  push:
+    branches: [main]
+    tags: ['servidor-v*']
+    paths: ['servidor/**', '.github/workflows/servidor.yml']
+  pull_request:
+    paths: ['servidor/**', '.github/workflows/servidor.yml']
+  workflow_dispatch:
+
+jobs:
+  servidor:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write # para publicar la imagen en ghcr.io
+    defaults:
+      run:
+        working-directory: servidor
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: dart-lang/setup-dart@v1
+        with:
+          sdk: stable
+
+      - name: Dependencias
+        run: dart pub get
+
+      - name: Análisis
+        run: dart analyze --fatal-infos
+
+      - name: Tests
+        run: dart test
+
+      - name: Imagen Docker (amd64)
+        run: docker build --platform linux/amd64 -t onbudget-servidor:ci .
+
+      - name: Comprobar que la imagen arranca
+        run: |
+          docker run -d --name prueba -p 18080:8080 onbudget-servidor:ci
+          for i in $(seq 1 20); do curl -fs http://127.0.0.1:18080/salud && exit 0; sleep 1; done
+          docker logs prueba; exit 1
+
+      - name: Publicar en ghcr.io
+        if: github.event_name != 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          imagen="ghcr.io/${GITHUB_REPOSITORY_OWNER,,}/onbudget-servidor"
+          version=$(grep '^version:' pubspec.yaml | awk '{print $2}')
+          echo "$GH_TOKEN" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin
+          for etiqueta in latest "$version"; do
+            docker tag onbudget-servidor:ci "$imagen:$etiqueta"
+            docker push "$imagen:$etiqueta"
+          done
+          echo "Publicada $imagen:latest y $imagen:$version" >> "$GITHUB_STEP_SUMMARY"

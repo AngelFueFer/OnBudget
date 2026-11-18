@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Publicación en Google Play · On Budget</title>
+  <meta name="description" content="Guía interna para publicar On Budget en Google Play: pasos, formularios, textos de la ficha y lista de comprobación.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="favicon.png">
+  <link rel="stylesheet" href="estilos.css">
+  <script src="config.js"></script>
+  <script src="comun.js"></script>
+</head>
+<body>
+  <header class="barra">
+    <div class="barra-dentro">
+      <a class="marca" href="./"><img src="logo.png" alt="">On Budget</a>
+      <nav class="menu" aria-label="Secciones">
+        <a href="./">Inicio</a>
+        <a href="privacidad.html">Privacidad</a>
+        <a href="borrar-datos.html">Borrar datos</a>
+        <a href="soporte.html">Soporte</a>
+        <a href="comunidad.html">Comunidad</a>
+        <a href="index.html#donar">Apoyar</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <p class="nota" style="margin-top:0">Página de trabajo del proyecto. No sale en el menú.</p>
+    <h1>Publicar On Budget en Google Play</h1>
+    <p>Todo lo que hace falta para pasar de cero a la <strong>prueba cerrada</strong> y después a producción, con los textos listos para copiar.</p>
+
+    <h2 id="estado">1. Lista de comprobación</h2>
+    <ul class="check">
+      <li class="hecho">Nombre definitivo: <strong>On Budget</strong>.</li>
+      <li class="hecho">Web con política de privacidad (<a href="privacidad.html">es</a> / <a href="privacy.html">en</a>), <a href="borrar-datos.html">borrado de datos</a> y <a href="soporte.html">soporte</a>.</li>
+      <li class="hecho">Permiso de Internet en la build release (faltaba: la conexión con el banco y las cotizaciones no funcionaban en el APK publicado).</li>
+      <li class="hecho">Quitado el permiso <code>REQUEST_IGNORE_BATTERY_OPTIMIZATIONS</code>, que Play rechaza en apps como esta. La app abre la lista de batería de Android.</li>
+      <li class="hecho">Aviso destacado antes de pedir el acceso a notificaciones (texto en la pantalla de tarjetas antes del botón).</li>
+      <li class="hecho">El workflow de Android genera también el <strong>AAB</strong> que pide Play (Actions → APK Android → Artifacts → <code>on-budget-aab</code>).</li>
+      <li class="hecho">Identificador de paquete: <strong><code>app.onbudget</code></strong> (no se puede cambiar después de subir la app). Los APK instalados con el identificador anterior hay que desinstalarlos una vez.</li>
+      <li class="bloquea"><strong>Clave de subida</strong>: crear el keystore y guardarlo en los secretos <code>ANDROID_KEYSTORE_BASE64</code>, <code>ANDROID_KEYSTORE_PASSWORD</code>, <code>ANDROID_KEY_ALIAS</code> y <code>ANDROID_KEY_PASSWORD</code>. Sin ella el AAB va firmado con la clave debug y Play lo rechaza. <span class="etiqueta urgente">Antes de subir</span></li>
+      <li>Rellenar <code>sitio_web/config.js</code>: titular, correo de contacto, PayPal, Buy Me a Coffee y enlaces de la prueba.</li>
+      <li>Repositorio público y GitHub Pages activado (<a href="#github">apartado 7</a>).</li>
+      <li>Icono 512×512, gráfico de funciones 1024×500 y al menos 2 capturas del móvil (<a href="#graficos">apartado 5</a>).</li>
+    </ul>
+
+    <h2 id="cuenta">2. Cuenta de desarrollador</h2>
+    <ol class="pasos">
+      <li><h3>Crear la cuenta</h3>
+        <p>En <a href="https://play.google.com/console/signup" rel="noopener">play.google.com/console/signup</a>, tipo <strong>Personal</strong>. Pago único de 25 US$.
+          Google pide verificar tu identidad con un documento, un teléfono y el acceso a un móvil Android real (con la app Play Console).</p></li>
+      <li><h3>Correo de contacto</h3>
+        <p>Es obligatorio y se ve en la ficha. Recomendable un Gmail solo para la app. Ponlo después en <code>config.js</code>.</p></li>
+      <li><h3>Requisito de las cuentas personales nuevas</h3>
+        <p>Antes de poder publicar en producción, la app tiene que pasar una <strong>prueba cerrada con al menos 12 testers durante 14 días seguidos</strong>.
+          Después se pide el acceso a producción desde el Panel con un cuestionario sobre la prueba.</p></li>
+    </ol>
+
+    <h2 id="app">3. Crear la app y rellenar «Contenido de la aplicación»</h2>
+    <p>Crear app → nombre «On Budget», idioma predeterminado Español (España), <strong>Aplicación</strong>, <strong>Gratis</strong>
+      (una app gratuita no puede pasar a ser de pago). Luego, en Política → Contenido de la aplicación:</p>
+    <div class="tabla"><table>
+      <tr><th>Formulario</th><th>Qué poner</th></tr>
+      <tr><td>Política de privacidad</td><td><code>https://angelfuefer.github.io/OnBudget/privacidad.html</code></td></tr>
+      <tr><td>Acceso a la aplicación</td><td>Todas las funciones están disponibles sin restricciones de acceso (no hay inicio de sesión).</td></tr>
+      <tr><td>Anuncios</td><td>No, la app no contiene anuncios.</td></tr>
+      <tr><td>Clasificación de contenido</td><td>Cuestionario IARC, categoría «Utilidad, productividad, comunicación u otra». Todo «No» → resultado para todos los públicos.</td></tr>
+      <tr><td>Público objetivo</td><td>Solo <strong>18 años o más</strong> (evita los requisitos de apps para menores).</td></tr>
+      <tr><td>Aplicación de noticias / gubernamental / salud</td><td>No / No / No.</td></tr>
+      <tr><td>Funciones financieras</td><td>La app solo ayuda a gestionar el presupuesto personal: no da préstamos, no hace pagos, no es banco ni cripto. Elige la opción de gestión de finanzas personales si aparece; si no, «La app no ofrece funciones financieras».</td></tr>
+      <tr><td>Seguridad de los datos</td><td>Ver <a href="#datos">apartado 4</a>.</td></tr>
+      <tr><td>Categoría de la ficha</td><td>Finanzas. Correo, web <code>https://angelfuefer.github.io/OnBudget/</code>.</td></tr>
+    </table></div>
+
+    <h2 id="datos">4. Seguridad de los datos (Data safety)</h2>
+    <p>Lo que se queda en el móvil (movimientos, extractos, tiquets, notificaciones) <strong>no se declara</strong>: Google solo cuenta lo que sale del dispositivo.
+      Las funciones opcionales (banco, cotizaciones) sí envían datos a terceros que elige el usuario, así que lo prudente es declararlas:</p>
+    <div class="tabla"><table>
+      <tr><th>Pregunta</th><th>Respuesta</th></tr>
+      <tr><td>¿La app recoge o comparte alguno de los tipos de datos de usuario obligatorios?</td><td><strong>Sí</strong></td></tr>
+      <tr><td>¿Todos los datos se cifran en tránsito?</td><td>Sí (HTTPS)</td></tr>
+      <tr><td>¿Los usuarios pueden pedir que se borren sus datos?</td><td>Sí: <code>https://angelfuefer.github.io/OnBudget/borrar-datos.html</code></td></tr>
+      <tr><td>Tipo de datos</td><td><strong>Información financiera → Otra información financiera</strong> (identificadores de inversiones consultadas y peticiones de saldo y movimientos al proveedor bancario)</td></tr>
+      <tr><td>¿Recogidos o compartidos?</td><td>Recogidos: sí. Compartidos: no (los envía el usuario, a petición suya, a un servicio que él configura)</td></tr>
+      <tr><td>¿Se tratan de forma efímera?</td><td>No (los movimientos descargados se guardan en el móvil)</td></tr>
+      <tr><td>¿Obligatorio u opcional?</td><td>Opcional: el usuario puede elegir</td></tr>
+      <tr><td>Finalidad</td><td>Funciones de la aplicación</td></tr>
+    </table></div>
+    <p class="nota">No hay cuentas, así que a la pregunta de si la app permite crear cuentas se responde «No» y no hace falta URL de eliminación de cuenta.</p>
+
+    <h2 id="ficha">5. Ficha de Play Store</h2>
+    <p>Play Console → Crecimiento → Presencia en Play Store → Ficha principal. Añade los idiomas con «Gestionar traducciones → Añadir traducciones propias».
+      El contador avisa si un texto pasa del límite.</p>
+    <div class="pestanas" role="tablist">
+      <button type="button" role="tab" data-panel="ficha-es" aria-selected="true">Español (es-ES)</button>
+      <button type="button" role="tab" data-panel="ficha-en" aria-selected="false">English (en-US / en-GB)</button>
+      <button type="button" role="tab" data-panel="ficha-fr" aria-selected="false">Français (fr-FR)</button>
+      <button type="button" role="tab" data-panel="ficha-de" aria-selected="false">Deutsch (de-DE)</button>
+    </div>
+    <div id="ficha-es" lang="es">
+      <div class="copiable" data-limite="30"><div class="cabeza"><h3>Nombre de la app</h3><span><span class="contador"></span> <button type="button" class="copiar">Copiar</button></span></div><pre>On Budget: Gastos del hogar</pre></div>
+      <div class="copiable" data-limite="80"><div class="cabeza"><h3>Descripción breve</h3><span><span class="contador"></span> <button type="button" class="copiar">Copiar</button></span></div><pre>Apunta los gastos de casa en 3 toques. Tus datos solo en tu móvil, sin anuncios.</pre></div>
+      <div class="copiable" data-limite="4000"><div class="cabeza"><h3>Descripción completa</h3><span><span class="contador"></span> <button type="button" class="copiar">Copiar</button></span></div><pre>On Budget te ayuda a saber en qué se va el dinero de casa, sin complicaciones y sin entregar tus datos a nadie.
+
+APUNTA EN SEGUNDOS
+• Ingresos y gastos por categorías, en tres toques.
+• Adjunta la foto del tiquet a cada gasto.
+
+TU PRESUPUESTO MENSUAL, CLARO
+• Reparte el mes entre cuenta mensual y ahorro.
+• Remanente y déficit calculados automáticamente.
+• Gastos fijos, tarjetas y cuentas de ahorro en un mismo sitio.
+
+IMPORTA TU BANCO
+• Extractos en CSV y Norma 43, sin duplicados y con la categoría sugerida.
+• Opcional y avanzado: conecta tu cuenta por Open Banking (PSD2) con tu propia clave de Enable Banking para descargar saldo y movimientos.
+
+DETECCIÓN DE PAGOS (OPCIONAL)
+• Si la activas, la app te propone los pagos que te avisan tu banco, tu wallet o tu app de pago.
+• Solo lee las notificaciones de esas apps, y el texto se borra en cuanto se procesa. Nunca sale de tu móvil.
+
+AHORRO E INVERSIONES
+• Sigue tus cuentas de ahorro e inversiones y, si quieres, conecta cotizaciones con tu propia clave.
+
+PRIVACIDAD DE VERDAD
+• Sin registro ni cuentas.
+• Todos tus datos se guardan solo en tu dispositivo.
+• Sin anuncios, sin analítica y sin rastreo.
+• Código abierto (AGPL-3.0): cualquiera puede revisar lo que hace la app.
+
+Disponible en español, inglés, francés y alemán, con tema claro y oscuro.</pre></div>
+      <div class="copiable" data-limite="500"><div class="cabeza"><h3>Novedades de la versión</h3><span><span class="contador"></span> <button type="button" class="copiar">Copiar</button></span></div><pre>Primera versión de prueba de On Budget:
+• Gastos e ingresos por categorías en tres toques.
+• Presupuesto mensual con cuenta mensual y ahorro.
+• Importación de extractos CSV y Norma 43.
+• Detección opcional de pagos por notificaciones.
+• Español, inglés, francés y alemán, tema claro y oscuro.
+¡Gracias por probarla! Cuéntanos los fallos desde la web de soporte.</pre></div>
+    </div>
+    <div id="ficha-en" lang="en" hidden>
+      <div class="copiable" data-limite="30"><div class="cabeza"><h3>Nombre de la app</h3><span><span class="contador"></span> <button type="button" class="copiar">Copiar</button></span></div><pre>On Budget: Home Budget</pre></div>
+      <div class="copiable" data-limite="80"><div class="cabeza"><h3>Descripción breve</h3><span><span class="contador"></span> <button type="button" class="copiar">Copiar</button></span></div><pre>Log household spending in 3 taps. Your data stays on your phone. No ads.</pre></div>
+      <div class="copiable" data-limite="4000"><div class="cabeza"><h3>Descripción completa</h3><span><span class="contador"></span> <button type="button" class="copiar">Copiar</button></span></div><pre>On Budget helps you see where your household money goes, simply and without handing your data to anyone.
+
+LOG IN SECONDS
+• Income and expenses by category, in three taps.
+• Attach a receipt photo to any expense.
+
+A CLEAR MONTHLY BUDGET
+• Split the month between your monthly account and savings.
+• Surplus and shortfall calculated automatically.
+• Fixed expenses, cards and savings accounts in one place.
+
+IMPORT FROM YOUR BANK
+• CSV and Norma 43 statements, without duplicates and with suggested categories.
+• Optional and advanced: connect your account via Open Banking (PSD2) with your own Enable Banking key to download balances and transactions.
+
+PAYMENT DETECTION (OPTIONAL)
+• If you turn it on, the app suggests the payments your bank, wallet or payment app notifies you about.
+• It only reads notifications from those apps, and the text is deleted as soon as it is processed. It never leaves your phone.
+
+SAVINGS AND INVESTMENTS
+• Track savings accounts and investments and, if you want, get market quotes with your own key.
+
+REAL PRIVACY
+• No sign-up, no accounts.
+• All your data is stored only on your device.
+• No ads, no analytics, no tracking.
+• Open source (AGPL-3.0): anyone can check what the app does.
+
+Available in English, Spanish, French and German, with light and dark themes.</pre></div>
+      <div class="copiable" data-limite="500"><div class="cabeza"><h3>Novedades de la versión</h3><span><span class="contador"></span> <button type="button" class="copiar">Copiar</button></span></div><pre>First test release of On Budget:
+• Income and expenses by category in three taps.
+• Monthly budget with monthly account and savings.
+• CSV and Norma 43 statement import.
+• Optional payment detection from notifications.
+• English, Spanish, French and German, light and dark theme.
+Thanks for testing! Report bugs from the support page.</pre></div>
+    </div>
+    <div id="ficha-fr" lang="fr" hidden>
+      <div class="copiable" data-limite="30"><div class="cabeza"><h3>Nombre de la app</h3><span><span class="contador"></span> <button type="button" class="copiar">Copiar</button></span></div><pre>On Budget : Budget familial</pre></div>
+      <div class="copiable" data-limite="80"><div class="cabeza"><h3>Descripción breve</h3><span><span class="contador"></span> <button type="button" class="copiar">Copiar</button></span></div><pre>Notez les dépenses du foyer en 3 gestes. Données sur votre téléphone, sans pub.</pre></div>
+      <div class="copiable" data-limite="4000"><div class="cabeza"><h3>Descripción completa</h3><span><span class="contador"></span> <button type="button" class="copiar">Copiar</button></span></div><pre>On Budget vous aide à savoir où part l&#x27;argent du foyer, simplement et sans confier vos données à personne.
+
+NOTEZ EN QUELQUES SECONDES
+• Revenus et dépenses par catégorie, en trois gestes.
+• Joignez la photo du ticket à chaque dépense.
+
+UN BUDGET MENSUEL CLAIR
+• Répartissez le mois entre compte courant et épargne.
+• Excédent et déficit calculés automatiquement.
+• Dépenses fixes, cartes et comptes d&#x27;épargne au même endroit.
+
+IMPORTEZ VOTRE BANQUE
+• Relevés CSV et Norma 43, sans doublons et avec la catégorie suggérée.
+• Option avancée : connectez votre compte via l&#x27;Open Banking (DSP2) avec votre propre clé Enable Banking pour télécharger solde et opérations.
+
+DÉTECTION DES PAIEMENTS (FACULTATIVE)
+• Si vous l&#x27;activez, l&#x27;app vous propose les paiements signalés par votre banque, votre wallet ou votre app de paiement.
+• Elle ne lit que les notifications de ces apps, et le texte est effacé dès qu&#x27;il est traité. Rien ne quitte votre téléphone.
+
+ÉPARGNE ET INVESTISSEMENTS
+• Suivez vos comptes d&#x27;épargne et vos investissements et, si vous le souhaitez, obtenez les cours avec votre propre clé.
+
+UNE VRAIE CONFIDENTIALITÉ
+• Sans inscription ni compte.
+• Toutes vos données restent uniquement sur votre appareil.
+• Sans publicité, sans statistiques, sans pistage.
+• Open source (AGPL-3.0) : chacun peut vérifier ce que fait l&#x27;app.
+
+Disponible en français, anglais, espagnol et allemand, avec thème clair et sombre.</pre></div>
+      <div class="copiable" data-limite="500"><div class="cabeza"><h3>Novedades de la versión</h3><span><span class="contador"></span> <button type="button" class="copiar">Copiar</button></span></div><pre>Première version de test d&#x27;On Budget :
+• Revenus et dépenses par catégorie en trois gestes.
+• Budget mensuel avec compte courant et épargne.
+• Import de relevés CSV et Norma 43.
+• Détection facultative des paiements par notifications.
+• Français, anglais, espagnol et allemand, thème clair et sombre.
+Merci de la tester ! Signalez les bugs depuis la page d&#x27;assistance.</pre></div>
+    </div>
+    <div id="ficha-de" lang="de" hidden>
+      <div class="copiable" data-limite="30"><div class="cabeza"><h3>Nombre de la app</h3><span><span class="contador"></span> <button type="button" class="copiar">Copiar</button></span></div><pre>On Budget: Haushaltsbuch</pre></div>
+      <div class="copiable" data-limite="80"><div class="cabeza"><h3>Descripción breve</h3><span><span class="contador"></span> <button type="button" class="copiar">Copiar</button></span></div><pre>Haushaltsausgaben in 3 Schritten erfassen. Daten bleiben am Handy. Ohne Werbung.</pre></div>
+      <div class="copiable" data-limite="4000"><div class="cabeza"><h3>Descripción completa</h3><span><span class="contador"></span> <button type="button" class="copiar">Copiar</button></span></div><pre>On Budget zeigt dir, wohin das Geld im Haushalt fließt – einfach und ohne deine Daten an jemanden weiterzugeben.
+
+IN SEKUNDEN ERFASST
+• Einnahmen und Ausgaben nach Kategorien, in drei Schritten.
+• Hänge an jede Ausgabe ein Foto des Kassenbons an.
+
+KLARES MONATSBUDGET
+• Teile den Monat zwischen Monatskonto und Sparen auf.
+• Überschuss und Fehlbetrag werden automatisch berechnet.
+• Fixkosten, Karten und Sparkonten an einem Ort.
+
+DEINE BANK IMPORTIEREN
+• Kontoauszüge als CSV und Norma 43, ohne Duplikate und mit vorgeschlagener Kategorie.
+• Optional für Fortgeschrittene: Verbinde dein Konto per Open Banking (PSD2) mit deinem eigenen Enable-Banking-Schlüssel, um Saldo und Umsätze zu laden.
+
+ZAHLUNGSERKENNUNG (OPTIONAL)
+• Wenn du sie aktivierst, schlägt die App die Zahlungen vor, die deine Bank, deine Wallet oder deine Bezahl-App meldet.
+• Sie liest nur Benachrichtigungen dieser Apps, und der Text wird nach der Verarbeitung gelöscht. Nichts verlässt dein Handy.
+
+SPAREN UND INVESTIEREN
+• Verfolge Sparkonten und Investments und rufe auf Wunsch Kurse mit deinem eigenen Schlüssel ab.
+
+ECHTER DATENSCHUTZ
+• Keine Registrierung, keine Konten.
+• Alle Daten bleiben nur auf deinem Gerät.
+• Keine Werbung, keine Analyse, kein Tracking.
+• Open Source (AGPL-3.0): Jeder kann prüfen, was die App macht.
+
+Verfügbar auf Deutsch, Englisch, Spanisch und Französisch, mit hellem und dunklem Design.</pre></div>
+      <div class="copiable" data-limite="500"><div class="cabeza"><h3>Novedades de la versión</h3><span><span class="contador"></span> <button type="button" class="copiar">Copiar</button></span></div><pre>Erste Testversion von On Budget:
+• Einnahmen und Ausgaben nach Kategorien in drei Schritten.
+• Monatsbudget mit Monatskonto und Sparen.
+• Import von CSV- und Norma-43-Kontoauszügen.
+• Optionale Zahlungserkennung über Benachrichtigungen.
+• Deutsch, Englisch, Spanisch und Französisch, helles und dunkles Design.
+Danke fürs Testen! Fehler bitte über die Support-Seite melden.</pre></div>
+    </div>
+
+    <h3 id="graficos">Gráficos</h3>
+    <div class="tabla"><table>
+      <tr><th>Recurso</th><th>Tamaño</th><th>De dónde</th></tr>
+      <tr><td>Icono</td><td>512×512 PNG</td><td><code>assets/branding/logo_cuadrado.png</code> redimensionado (Play redondea las esquinas)</td></tr>
+      <tr><td>Gráfico de funciones</td><td>1024×500 PNG o JPG</td><td>Logo y lema sobre el degradado azul del logo</td></tr>
+      <tr><td>Capturas del móvil</td><td>2 a 8, proporción máxima 2:1</td><td>Ya hechas en <a href="capturas/principal-claro.png"><code>sitio_web/capturas/</code></a> (1080×2160, datos de ejemplo, en claro y oscuro). Se regeneran con <code>flutter test tool/capturas/capturas_test.dart</code></td></tr>
+    </table></div>
+    <p>Capturas propuestas: 1) el mes de un vistazo, 2) apuntar un gasto en 3 toques, 3) cuenta mensual y ahorro, 4) importar extracto, 5) pago detectado, 6) privacidad.</p>
+
+    <h2 id="pruebas">6. Pruebas: interna, cerrada y producción</h2>
+    <ol class="pasos">
+      <li><h3>Prueba interna (el mismo día)</h3>
+        <p>Pruebas → Prueba interna → Crear versión → sube el AAB (<code>on-budget-aab</code>) y pega las novedades.
+          Añade una lista de correos (hasta 100). Suele estar disponible en minutos y sirve para comprobar que todo instala bien.
+          No cuenta para los 14 días.</p></li>
+      <li><h3>Grupo de testers</h3>
+        <p>Crea un Grupo de Google (p. ej. «onbudget-testers»), permite que cualquiera se una y pon su enlace en <code>config.js → grupoTesters</code>.
+          La web ya muestra los pasos en <a href="index.html#probar">Probar la beta</a>.</p></li>
+      <li><h3>Prueba cerrada</h3>
+        <p>Pruebas → Prueba cerrada → Alpha → Testers → añade el Grupo de Google. Crea la versión con el mismo AAB y envíala a revisión
+          (la primera revisión puede tardar unos días). Copia el enlace de suscripción en <code>config.js → pruebaPlay</code>.</p></li>
+      <li><h3>12 testers durante 14 días</h3>
+        <p>Consigue al menos 12 personas que acepten la invitación, instalen la app y sigan dentro 14 días seguidos. Mejor 15 o más por si alguien se sale.
+          Sube alguna actualización durante esas dos semanas: Google pregunta qué cambiaste con lo que te dijeron.</p></li>
+      <li><h3>Solicitar acceso a producción</h3>
+        <p>Desde el Panel, cuando se cumplan los 14 días. Después, Producción → Crear versión, países (empezar por España) y enviar a revisión.
+          Cuando esté publicada, pega el enlace en <code>config.js → play</code>.</p></li>
+    </ol>
+    <div class="aviso"><p><strong>Revisión del acceso a notificaciones.</strong> Google mira con lupa las apps que leen notificaciones.
+      Que la app solo lea las de bancos y wallets, que el texto se borre al procesarlo, que el aviso salga antes del permiso y que la política lo explique (apartado 3) es justo lo que piden.
+      Si lo rechazan, la respuesta suele indicar el punto exacto a corregir.</p></div>
+
+    <h2 id="github">7. Hacer público el repositorio y activar la web</h2>
+    <ol class="pasos">
+      <li><h3>Fusionar el PR de la web</h3><p>Así la licencia, el README y la web están en <code>main</code> antes de abrirlo.</p></li>
+      <li><h3>Hacerlo público</h3><p>GitHub → OnBudget → <strong>Settings → General</strong> → abajo del todo, <em>Danger Zone</em> → <strong>Change repository visibility → Make public</strong> y confirma escribiendo el nombre.</p></li>
+      <li><h3>Activar Pages</h3><p><strong>Settings → Pages</strong> → <em>Build and deployment</em> → Source: <strong>GitHub Actions</strong>.</p></li>
+      <li><h3>Publicar</h3><p><strong>Actions → Web (GitHub Pages) → Run workflow</strong>. En un minuto la web está en <code>https://angelfuefer.github.io/OnBudget/</code>. Cada cambio en <code>sitio_web/</code> se publica solo.</p></li>
+      <li><h3>Seguridad y comunidad</h3><p><strong>Settings → Code security</strong>: activa <em>Private vulnerability reporting</em>, <em>Dependabot alerts</em> y <em>Secret scanning</em>.
+        En la portada del repo, el engranaje de <em>About</em>: web <code>https://angelfuefer.github.io/OnBudget/</code> y temas <code>flutter</code>, <code>budget</code>, <code>privacy</code>, <code>open-banking</code>.
+        Si quieres, <strong>Settings → Features → Discussions</strong> para preguntas e ideas.</p></li>
+    </ol>
+  </main>
+  <footer>
+    <p>© 2026 <span data-dato="titular">On Budget</span> · <a href="privacidad.html">Privacidad</a> · <a href="privacy.html">Privacy (EN)</a> · <a href="borrar-datos.html">Borrar datos</a> · <a href="soporte.html">Soporte</a></p>
+    <p class="tema">Tema: <button type="button" data-tema="auto">Automático</button> <button type="button" data-tema="claro">Claro</button> <button type="button" data-tema="oscuro">Oscuro</button></p>
+    <p>Código abierto con licencia <a href="https://github.com/AngelFueFer/OnBudget/blob/main/LICENSE">AGPL-3.0</a> · <a href="https://github.com/AngelFueFer/OnBudget">GitHub</a> · Sin cookies, sin anuncios y sin estadísticas de visitas.</p>
+  </footer>
+</body>
+</html>
